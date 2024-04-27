@@ -1,13 +1,29 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from '../../public/Logo.png'
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthProvider";
 const Navbar = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                toast.success('Logged Out');
+                navigate(location.state = '/login');
+            })
+            .catch(() => {
+                toast.error("Logout failed");
+            });
+    }
 
     const navLinks = (
         <>
             <li><NavLink className='text-xl font-mono font-bold ' to='/'>Home</NavLink></li>
             <li><NavLink className='text-xl font-bold font-mono' to='/features'>About</NavLink></li>
-            <li><NavLink className='text-xl font-bold font-mono' to='/properties'>Properties</NavLink></li>
+            <li><NavLink className='text-xl font-bold font-mono' to='/properties'>All Items</NavLink></li>
 
         </>
     );
@@ -22,7 +38,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <Link to='/'><img className='w-20 lg:w-44' src={logo} alt=""/></Link>
+                <Link to='/'><img className='w-20 lg:w-44' src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -31,12 +47,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-end gap-5">
 
+                {
+                    user ?
 
-                <div> <button className='btn bg-orange-200 text-black text-xl font-mono border-none'>Logout</button><Toaster position="top-right"
-                    reverseOrder={false} /></div> :
-                <Link to='/login'><button className='btn bg-orange-200 text-black text-xl font-mono border-none'>Login</button></Link>
+                        <div> <button onClick={handleLogout} className='btn bg-orange-200 text-black text-xl font-mono border-none'>Logout</button><Toaster position="top-right"
+                            reverseOrder={false} /></div> :
+                        <Link to='/login'><button className='btn bg-orange-200 text-black text-xl font-mono border-none'>Login</button></Link>
 
-
+                }
             </div>
 
         </div>
