@@ -9,7 +9,7 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false)
-    const { createUser } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext) 
 
     const handleRegister = e => {
 
@@ -53,10 +53,10 @@ const Register = () => {
             <Navbar></Navbar>
             <div className="container mx-auto mb-10 my-10">
                 <Helmet>
-                    <title>Welcome to Elite Estate</title>
+                    <title>Register</title>
                 </Helmet>
                 <div className=" max-w-md p-8 space-y-3 rounded-xl dark:bg-base-200 dark:text-gray-800 md:w-3/4 lg:w-1/2 mx-auto shadow-md">
-                    <h1 className="text-2xl font-bold text-center mb-8">Welcome to Elite Estates</h1>
+                    <h1 className="text-2xl font-bold text-center mb-8">Welcome to Lumina Art & Craft</h1>
                     <form onSubmit={handleRegister} noValidate="" action="" className="space-y-6">
                         <div className="space-y-1 text-sm">
                             <label htmlFor="email" className="block dark:text-gray-600">Email</label>

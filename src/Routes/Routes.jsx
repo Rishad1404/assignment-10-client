@@ -6,6 +6,9 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import AllItems from "../Pages/AllItems";
 import Blogs from "../Pages/Blogs";
+import PrivateRoute from "./PrivateRoute";
+import AddCraftItem from "../AddCraft/AddCraftItem";
+import MyCraftItems from "../MyCraftItem/MyCraftItems";
 const routes = createBrowserRouter([
     {
       path: "/",
@@ -31,6 +34,14 @@ const routes = createBrowserRouter([
         {
             path:'/blogs',
             element:<Blogs></Blogs>
+        },
+        {
+            path:'/addItems',
+            element:<PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
+        },
+        {
+            path:'/myItems',
+            element:<PrivateRoute><MyCraftItems></MyCraftItems></PrivateRoute>
         }
       ]
     },
