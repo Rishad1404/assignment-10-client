@@ -4,6 +4,7 @@ import { AuthContext } from "../AuthContext/AuthProvider";
 import { GrUpdate } from "react-icons/gr";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiFilter } from "react-icons/ci";
+import Swal from "sweetalert2";
 
 const MyCraftItems = () => {
     const { user } = useContext(AuthContext) || {}
@@ -16,11 +17,43 @@ const MyCraftItems = () => {
                 setItems(data)
             })
     }, [user])
+
+    const handleDelete=_id=>{
+        console.log(_id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+              fetch(`http://localhost:5000/crafts/${_id}`,{
+                method:"DELETE",
+
+              })
+              .then(res=>res.json())
+              .then(data=>{
+                console.log(data);
+                if(data.deletedCount>0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success",      
+                      });
+                }
+              })
+            }
+          });
+    }
     return (
         <div>
             <Navbar></Navbar>
             <div className="bg-base-200 py-5 my-5 text-center">
-                <h1 className="text-6xl font-serif text-center my-10">My Products</h1>
+                <h1 className="text-6xl font-serif text-center my-10">My Art and Craft</h1>
                 <button className="btn bg-[#0097B2] text-white text-lg "><CiFilter /> Filter</button>
             </div>
             <div className="container mx-auto">
@@ -44,7 +77,7 @@ const MyCraftItems = () => {
                                 </div>
                                 <div className="flex gap-5">
                                     <button type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-5 justify-center"><GrUpdate /> Update</button>
-                                    <button type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-5 justify-center"><MdDeleteOutline /> Delete</button>
+                                    <button onClick={()=>handleDelete(item._id)} type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-5 justify-center"><MdDeleteOutline /> Delete</button>
                                 </div>
                             </div>
                         </div>
