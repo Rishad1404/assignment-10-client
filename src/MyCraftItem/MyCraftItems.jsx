@@ -5,6 +5,7 @@ import { GrUpdate } from "react-icons/gr";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiFilter } from "react-icons/ci";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCraftItems = () => {
     const { user } = useContext(AuthContext) || {}
@@ -18,7 +19,7 @@ const MyCraftItems = () => {
             })
     }, [user])
 
-    const handleDelete=_id=>{
+    const handleDelete = _id => {
         console.log(_id)
         Swal.fire({
             title: "Are you sure?",
@@ -28,26 +29,26 @@ const MyCraftItems = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              
-              fetch(`http://localhost:5000/crafts/${_id}`,{
-                method:"DELETE",
 
-              })
-              .then(res=>res.json())
-              .then(data=>{
-                console.log(data);
-                if(data.deletedCount>0){
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success",      
-                      });
-                }
-              })
+                fetch(`http://localhost:5000/myCrafts/${_id}`, {
+                    method: "DELETE",
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success",
+                            });
+                        }
+                    })
             }
-          });
+        });
     }
     return (
         <div>
@@ -75,9 +76,13 @@ const MyCraftItems = () => {
                                     <h2 className="text-lg font-bold">Customization: <span className={`font-bold ${item.customization === "Yes" ? "text-green-700" : "text-red-700"}`}>{item.customization}</span></h2>
                                     <h2 className="font-bold text-lg ">Status: <span className="text-green-700">{item.status}</span></h2>
                                 </div>
-                                <div className="flex gap-5">
-                                    <button type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-5 justify-center"><GrUpdate /> Update</button>
-                                    <button onClick={()=>handleDelete(item._id)} type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-5 justify-center"><MdDeleteOutline /> Delete</button>
+                                <div className="flex gap-5 justify-center">
+                                    <Link to={`updateCraft/${item._id}`}>
+                                        <button type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-2 justify-center">
+                                            <GrUpdate /> Update
+                                        </button>
+                                    </Link>
+                                    <button onClick={() => handleDelete(item._id)} type="button" className=" p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-2 justify-center"><MdDeleteOutline /> Delete</button>
                                 </div>
                             </div>
                         </div>
