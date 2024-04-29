@@ -1,4 +1,5 @@
 import logo from '../../public/Logo.png'
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 const Footer = () => {
 	return (
 		<footer className="p-10 bg-base-200 text-base-content my-10">
@@ -27,6 +28,11 @@ const Footer = () => {
 					<a className="link link-hover">Privacy policy</a>
 					<a className="link link-hover">Cookie policy</a>
 				</nav>
+			</div>
+			<div className='flex items-center justify-center gap-5 mt-10'>
+				<FaFacebook className='h-6 w-6'></FaFacebook>
+				<FaTwitter className='h-6 w-6'></FaTwitter>
+				<FaInstagram className='h-6 w-6'></FaInstagram>
 			</div>
 			<div className="py-6 text-sm font-medium text-center">© Lumina Art & Craft. All rights reserved.</div>
 		</footer>

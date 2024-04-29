@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import logo from '../../public/Logo.png'
+import logo from '/Logo.png'
 import toast, { Toaster } from "react-hot-toast";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
