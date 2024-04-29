@@ -47,7 +47,7 @@ const routes = createBrowserRouter([
         {
             path:'/updateCraft/:id',
             element:<UpdateCraft></UpdateCraft>,
-            loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`)
+            // loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`)
         },
         {
             path:'/addItems',

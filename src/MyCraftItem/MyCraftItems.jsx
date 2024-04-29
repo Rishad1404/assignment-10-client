@@ -77,7 +77,7 @@ const MyCraftItems = () => {
                                     <h2 className="font-bold text-lg ">Status: <span className="text-green-700">{item.status}</span></h2>
                                 </div>
                                 <div className="flex gap-5 justify-center">
-                                    <Link to={`updateCraft/${item._id}`}>
+                                    <Link to={`/updateCraft/${item._id}`}>
                                         <button type="button" className="w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50 flex items-center gap-2 justify-center">
                                             <GrUpdate /> Update
                                         </button>

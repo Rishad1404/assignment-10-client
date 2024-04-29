@@ -6,11 +6,11 @@ const Categories = () => {
             </div>
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
                 <div className="card card-compact bg-base-100 shadow-xl">
-                    <figure><img src="https://i.imgur.com/2qkj7d1.jpg" alt="Shoes" /></figure>
+                    <figure><img src="https://i.imgur.com/2qkj7d1.jpg" alt="Shoes"/></figure>
                     <div className="card-body">
                         <h2 className="text-4xl font-bold text-center">Card Making</h2>
                         <div className="card-actions justify-end">
-                            <button className="btn bg-[#0097B2] w-full text-white text-xl">View More</button>
+                            <button className="btn bg-[#0097B2] w-full text-white">View More</button>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ const Categories = () => {
                 <div className="card card-compact bg-base-100 shadow-xl">
                     <figure><img src="https://i.imgur.com/mNhwXv1.jpg" alt="Shoes" /></figure>
                     <div className="card-body">
-                        <h2 className="text-4xl font-bold text-center">. Glass Dying & Staining</h2>
+                        <h2 className="text-4xl font-bold text-center">Glass Dying & Staining</h2>
                         <div className="card-actions justify-end">
                             <button className="btn bg-[#0097B2] w-full text-white">View More</button>
                         </div>

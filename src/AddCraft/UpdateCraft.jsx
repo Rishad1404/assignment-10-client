@@ -1,12 +1,26 @@
 
 import Navbar from "../Shared/Navbar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 const UpdateCraft = () => {
     const { user } = useContext(AuthContext) || {}
-    const handleAddCraft=e=>{
+    const [crafts,setCrafts]=useState({});
+    const {id}=useParams();
+    console.log(id)
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/singleCraft/${id}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setCrafts(data)
+            console.log(data)
+        })
+    },[id])
+
+    const handleUpdateCraft=e=>{
         e.preventDefault();
         const name=e.target.name.value
         const email=user.email
@@ -22,7 +36,7 @@ const UpdateCraft = () => {
         // console.log(name,email,itemName,photo,subcategory,rating,price,customization,processTime,status)
         const updatedCraft={name,email,itemName,photo,subcategory,rating,price,description,customization,processTime,status}
 
-        fetch('http://localhost:5000/crafts',{
+        fetch(`http://localhost:5000/updateCraft/${id}`,{
             method:"PUT",
             headers:{"Content-type":"application/json"},
             body:JSON.stringify(updatedCraft)
@@ -38,6 +52,13 @@ const UpdateCraft = () => {
                   })
                 e.target.reset();
             }
+            else if(data?.modifiedCount==0){
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please Modify the data",
+                  });
+            }
         })
 
     }
@@ -47,22 +68,22 @@ const UpdateCraft = () => {
             <div className="bg-base-100">
                 <section className="p-6 dark:text-gray-900">
 
-                    <form onSubmit={handleAddCraft} className="container flex flex-col mx-auto space-y-12">
+                    <form onSubmit={handleUpdateCraft} className="container flex flex-col mx-auto space-y-12">
                         <fieldset className="grid grid-cols-3 gap-6 p-6 rounded-md shadow-lg border-[#0097B2] border dark:bg-base-200">
-                            <h2 className="text-center col-span-full text-3xl font-bold">Add a Craft Item</h2>
+                            <h2 className="text-center col-span-full text-3xl font-bold">Update Craft Item</h2>
                             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
 
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="name" className="text-lg">User Name</label>
-                                    <input id="name" type="text" name="name" placeholder="User Name" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="name" type="text" name="name" placeholder="User Name" defaultValue={crafts.name} className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="email" className="text-lg">Email</label>
-                                    <input id="email" type="email" name="email" placeholder="Email" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="email" type="email" name="email" placeholder="Email" defaultValue={crafts.email} className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="itemName" className="text-lg">Item Name</label>
-                                    <input id="itemName" type="text" name="itemName" placeholder="Item Name" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="itemName" type="text" name="itemName" placeholder="Item Name" defaultValue={crafts.itemName} className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="photo" className="text-lg">Photo URL</label>
@@ -86,25 +107,25 @@ const UpdateCraft = () => {
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="city" className="text-lg">Price</label>
-                                    <input id="city" type="text" placeholder="Price" name="price" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="city" type="text" placeholder="Price" defaultValue={crafts.price} name="price" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="state" className="text-lg">Rating</label>
-                                    <input id="state" type="number" placeholder="Rating" name="rating" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="state" type="number" placeholder="Rating" defaultValue={crafts.rating} name="rating" className="w-full p-3 border rounded-md focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="zip" className="text-lg">Customization</label>
-                                    <input id="zip" type="text" placeholder="Yes / No" name="customization" className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="zip" type="text" placeholder="Yes / No" name="customization" defaultValue={crafts.customization} className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-3">
                                     <label htmlFor="zip" className="text-lg">Processing Time</label>
-                                    <input id="zip" type="text" placeholder="Processing Time" name="processTime" className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="zip" type="text" placeholder="Processing Time" defaultValue={crafts.processTime} name="processTime" className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
                                 <div className="col-span-full sm:col-span-full">
                                     <label htmlFor="zip" className="text-lg">Stock Status</label>
-                                    <input id="zip" type="text" name="status" placeholder="Stock Status - example: In Stock" className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
+                                    <input id="zip" type="text" name="status" placeholder="Stock Status - example: In Stock" defaultValue={crafts.status} className="w-full rounded-md p-3 border focus:ring focus:ring-opacity-75 dark:text-black focus:dark:ring-[#0097B2] dark:border-gray-300" />
                                 </div>
-                                <button type="submit" className="btn col-span-full text-lg font-extrabold bg-[#0097B2] text-white">Add Craft</button>
+                                <button type="submit" className="btn col-span-full text-lg font-extrabold bg-[#0097B2] text-white">Update Craft</button>
                             </div>
 
                         </fieldset>

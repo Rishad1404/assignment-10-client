@@ -40,12 +40,12 @@ const CraftDetails = () => {
                         </div>
                         <hr className="my-6 border-gray-300" />
                         <p className="text-lg">
-                            <span className="font-bold">Status:</span> <span className="bg-green-500 px-6 py-1 rounded-md text-xl font-bold text-white">{crafts.status}</span>
+                            <span className="font-bold">Status:</span> <span className={`${crafts.status==="Available"? "bg-green-600":"bg-red-600"} px-6 py-1 rounded-md text-xl font-bold text-white`}>{crafts.status}</span>
                         </p>
                         <p className="text-lg ">Customization:
                             <span className={`font-bold ${crafts.customization === "Yes" ? "text-green-700" : "text-red-700"}`}>{crafts.customization}</span > 
                         </p>
-                        <p className="text-lg flex items-center">Rating
+                        <p className="text-lg flex items-center">Rating: 
                             <span className="font-bold"><FaStar></FaStar></span> {crafts.rating}
                         </p>
                         <h1 className="my-10 text-xl font-bold">Price: {crafts.price} $</h1>
