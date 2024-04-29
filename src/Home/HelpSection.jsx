@@ -7,24 +7,24 @@ const HelpSection = () => {
                 <p className="mt-4 mb-8 dark:text-gray-600"> Here are some FAQ questions and answers to help you knowing about us:</p>
                 <div className="space-y-4">
                     <details className="w-full border-2 border-[#0097B2] rounded-lg">
-                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">What defines a luxury estate?</summary>
-                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Luxury estates are characterized by their exceptional quality, exquisite design, prime locations, and extensive amenities. These properties often feature high-end finishes, advanced technology integration, and expansive grounds or breathtaking views. </p>
+                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">What kind of paper craft projects can I find on your website?</summary>
+                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Yes, we offer step-by-step tutorials and instructions for all of our paper craft projects. Each tutorial is accompanied by clear photos or videos to guide you through the process, making it easy for crafters of all skill levels to follow along. </p>
                     </details>
                     <details className="w-full border-2 border-[#0097B2] rounded-lg">
-                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> What amenities can I expect in a luxury estate?</summary>
+                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> Do you provide tutorials or instructions for your paper craft projects?</summary>
                         <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Luxury estates often boast a wide range of amenities, including but not limited to: infinity pools, private gyms, home theaters, wine cellars, smart home automation systems, expansive gardens or landscaping, guest houses, and premium security features. </p>
                     </details>
                     <details className="w-full border-2 border-[#0097B2] rounded-lg">
-                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> How do I know if a luxury estate is worth the investment?</summary>
-                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Investing in a luxury estate involves careful consideration of factors such as location, market trends, property features, and potential for appreciation. Working with experienced real estate professionals who specialize in luxury properties can help you make informed decisions and assess the value of your investment. </p>
+                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">What types of glass art do you feature on your website?</summary>
+                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Our website showcases various forms of glass art, including stained glass, fused glass, glass painting, and glass etching. Whether you're interested in creating decorative pieces for your home or unique gifts for loved ones, you'll find plenty of inspiration here. </p>
                     </details>
                     <details className="w-full border-2 border-[#0097B2] rounded-lg">
-                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> Are luxury estates only available in specific locations?</summary>
-                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">While luxury estates are often associated with exclusive neighborhoods in major cities or resort destinations, they can be found in a variety of locations worldwide. Whether it is a beachfront villa, a countryside estate, or a penthouse in the heart of a bustling metropolis, there are luxury properties to suit diverse preferences and lifestyles. </p>
+                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> Can I purchase supplies for my paper craft and glass art projects through your website?</summary>
+                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Yes, we offer a selection of high-quality paper craft and glass art supplies for sale on our website. From specialty papers and tools to glass cutting equipment and paints, we have everything you need to bring your creative visions to life. </p>
                     </details>
                     <details className="w-full border-2 border-[#0097B2] rounded-lg">
-                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> What sets your luxury real estate agency apart from others?</summary>
-                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Our luxury real estate agency prides itself on unparalleled expertise, personalized service, and a commitment to excellence. With a deep understanding of the luxury market and access to exclusive listings, we strive to exceed our client's expectations and deliver exceptional results tailored to their unique needs and desires. </p>
+                        <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600"> Do you accept submissions from other artists and crafters to feature on your website?</summary>
+                        <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Yes, we welcome submissions from artists and crafters who would like to showcase their work on our website. Whether you're an established professional or an aspiring hobbyist, we'd love to feature your creations and share your talent with our community. </p>
                     </details>
                 </div>
             </div>
