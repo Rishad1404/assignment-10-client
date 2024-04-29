@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
         {
             path:'/crafts/:id',
             element:<CraftDetails></CraftDetails>,
-            loader:({params})=>fetch(`http://localhost:5000/${params._id}`)
+            // loader:({params})=>fetch(`http://localhost:5000/${params._id}`)
         },
         {
             path:'/blogs',
