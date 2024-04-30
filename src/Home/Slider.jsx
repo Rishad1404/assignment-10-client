@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Slider = () => {
     const handleType = (count) => {
         // access word count number
-        console.log(count)
+        // console.log(count)
     }
 
 

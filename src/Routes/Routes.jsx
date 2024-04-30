@@ -20,7 +20,7 @@ const routes = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
-            loader:()=>fetch('http://localhost:5000/crafts')
+            loader:()=>fetch('https://lumina-art-and-craft-store-server.vercel.app/crafts')
         },
         {
             path:'/login',
@@ -33,12 +33,12 @@ const routes = createBrowserRouter([
         {
             path:'/items',
             element:<AllItems></AllItems>,
-            loader:()=>fetch('http://localhost:5000/crafts')
+            loader:()=>fetch('https://lumina-art-and-craft-store-server.vercel.app/crafts')
         },
         {
             path:'/crafts/:id',
             element:<CraftDetails></CraftDetails>,
-            // loader:({params})=>fetch(`http://localhost:5000/${params._id}`)
+            // loader:({params})=>fetch(`https://lumina-art-and-craft-store-server.vercel.app/${params._id}`)
         },
         {
             path:'/blogs',
@@ -47,7 +47,7 @@ const routes = createBrowserRouter([
         {
             path:'/updateCraft/:id',
             element:<UpdateCraft></UpdateCraft>,
-            // loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`)
+            // loader:({params})=>fetch(`https://lumina-art-and-craft-store-server.vercel.app/crafts/${params.id}`)
         },
         {
             path:'/addItems',

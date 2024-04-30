@@ -11,7 +11,7 @@ const MyCraftItems = () => {
     const { user } = useContext(AuthContext) || {}
     const [items, setItems] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myCraft/${user?.email}`)
+        fetch(`https://lumina-art-and-craft-store-server.vercel.app/myCraft/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -32,7 +32,7 @@ const MyCraftItems = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/myCrafts/${_id}`, {
+                fetch(`https://lumina-art-and-craft-store-server.vercel.app/myCrafts/${_id}`, {
                     method: "DELETE",
 
                 })

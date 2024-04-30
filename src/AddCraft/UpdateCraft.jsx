@@ -12,7 +12,7 @@ const UpdateCraft = () => {
     console.log(id)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/singleCraft/${id}`)
+        fetch(`https://lumina-art-and-craft-store-server.vercel.app/singleCraft/${id}`)
         .then(res=>res.json())
         .then(data=>{
             setCrafts(data)
@@ -36,7 +36,7 @@ const UpdateCraft = () => {
         // console.log(name,email,itemName,photo,subcategory,rating,price,customization,processTime,status)
         const updatedCraft={name,email,itemName,photo,subcategory,rating,price,description,customization,processTime,status}
 
-        fetch(`http://localhost:5000/updateCraft/${id}`,{
+        fetch(`https://lumina-art-and-craft-store-server.vercel.app/updateCraft/${id}`,{
             method:"PUT",
             headers:{"Content-type":"application/json"},
             body:JSON.stringify(updatedCraft)

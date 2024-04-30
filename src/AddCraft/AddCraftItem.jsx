@@ -22,7 +22,7 @@ const AddCraftItem = () => {
         // console.log(name,email,itemName,photo,subcategory,rating,price,customization,processTime,status)
         const info={name,email,itemName,photo,subcategory,rating,price,description,customization,processTime,status}
 
-        fetch('http://localhost:5000/crafts',{
+        fetch('https://lumina-art-and-craft-store-server.vercel.app/crafts',{
             method:"POST",
             headers:{"Content-type":"application/json"},
             body:JSON.stringify(info)

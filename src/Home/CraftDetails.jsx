@@ -9,7 +9,7 @@ const CraftDetails = () => {
     console.log(id)
     const [crafts, setCrafts] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/singleCraft/${id}`)
+        fetch(`https://lumina-art-and-craft-store-server.vercel.app/singleCraft/${id}`)
             .then(res => res.json())
             .then(data => {
                 setCrafts(data)
