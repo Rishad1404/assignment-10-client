@@ -11,6 +11,7 @@ import AddCraftItem from "../AddCraft/AddCraftItem";
 import MyCraftItems from "../MyCraftItem/MyCraftItems";
 import CraftDetails from "../Home/CraftDetails";
 import UpdateCraft from "../AddCraft/UpdateCraft";
+import SubCategories from "../Home/SubCategories";
 const routes = createBrowserRouter([
     {
       path: "/",
@@ -43,6 +44,12 @@ const routes = createBrowserRouter([
         {
             path:'/blogs',
             element:<Blogs></Blogs>
+        },
+        {
+            path:'/subcategories',
+            element:<SubCategories></SubCategories>,
+            loader:()=>fetch('https://lumina-art-and-craft-store-server.vercel.app/crafts')
+
         },
         {
             path:'/updateCraft/:id',

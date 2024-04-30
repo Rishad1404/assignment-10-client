@@ -21,6 +21,7 @@ const AddCraftItem = () => {
         const status=e.target.status.value
         // console.log(name,email,itemName,photo,subcategory,rating,price,customization,processTime,status)
         const info={name,email,itemName,photo,subcategory,rating,price,description,customization,processTime,status}
+        const sub={itemName,photo,subcategory,rating,price,description,customization,processTime,status}
 
         fetch('https://lumina-art-and-craft-store-server.vercel.app/crafts',{
             method:"POST",
@@ -34,6 +35,18 @@ const AddCraftItem = () => {
                 e.target.reset();
             }
         })
+
+
+        fetch('https://lumina-art-and-craft-store-server.vercel.app/subcategory',{
+            method:"POST",
+            headers:{"Content-type":"application/json"},
+            body:JSON.stringify(sub)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+        
 
     }
 
