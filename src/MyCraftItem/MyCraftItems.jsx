@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 
 const MyCraftItems = () => {
     const { user } = useContext(AuthContext) || {}
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const [filterCriteria, setFilterCriteria] = useState("");
     useEffect(() => {
         fetch(`https://lumina-art-and-craft-store-server.vercel.app/myCraft/${user?.email}`)
             .then(res => res.json())
@@ -18,6 +19,12 @@ const MyCraftItems = () => {
                 setItems(data)
             })
     }, [user])
+
+    const handleFilterChange = (e) => {
+        setFilterCriteria(e.target.value);
+    };
+
+    
 
     const handleDelete = _id => {
         console.log(_id)
@@ -50,17 +57,28 @@ const MyCraftItems = () => {
             }
         });
     }
+
+    const filteredItems = filterCriteria
+        ? items.filter(item => item.customization === filterCriteria)
+        : items;
+
     return (
         <div>
             <Navbar></Navbar>
             <div className="bg-base-200 py-5 my-5 text-center">
                 <h1 className="text-6xl font-serif text-center my-10">My Art and Craft</h1>
-                <button className="btn bg-[#0097B2] text-white text-lg "><CiFilter /> Filter</button>
+                <select name="" id="" onChange={handleFilterChange}
+                    value={filterCriteria} className="bg-[#0097B2] text-white px-5 py-3 rounded-lg text-xl">
+                <CiFilter></CiFilter>
+                    <option value=""> Filter by Customization</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
             </div>
             <div className="container mx-auto">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {items.map(item => (
+                    {filteredItems.map(item => (
                         <div key={item._id} className="rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
                             <img src={item.photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                             <div className="flex flex-col justify-between p-6 space-y-8">

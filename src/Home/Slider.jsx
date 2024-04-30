@@ -35,7 +35,7 @@ return (
                         <div className="max-w-4xl text-7xl font-extrabold">
                             <Typewriter
                                 words={['Lumina', 'Art', 'And', 'Craft']}
-                                loop={10}
+                                loop={50}
                                 cursor
                                 cursorStyle=''
                                 typeSpeed={70}
