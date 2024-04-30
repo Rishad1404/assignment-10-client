@@ -7,7 +7,7 @@ o	Add Craft Item: User can add any craft item in our website
 o	 Sign-Up and Sign-In: Enable users to register and log in securely
 o	Access Control: Control access to features based on user authentication.
 o	Install SDK: Include Firebase JavaScript SDK in your website.
-o	Vercel Deploy: We can deploy our server site in Vercel and use the api in our Client Website
+o	Vercel Deploy: We can deploy our server site in Vercel and use the API in our Client Website
 Packages in use:
 1.	React-simple-typewriter
 2.	React-tooltip
