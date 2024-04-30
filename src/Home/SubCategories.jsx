@@ -1,27 +1,35 @@
+import { useLoaderData, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Link, useLoaderData } from 'react-router-dom';
-const CraftCard = () => {
+import Subcategory from './Subcategory';
+import Navbar from '../Shared/Navbar';
+
+const SubCategories = () => {
+    const location = useLocation();
+    const { subcategory } = location.state || {};
+
     const crafts = useLoaderData();
-    const { _id, itemName, description, photo } = crafts;
+
+    const filteredCrafts = subcategory
+        ? crafts.filter(craft => craft.subcategory === subcategory)
+        : crafts;
+
     return (
         <div>
-            <div className="rounded-md shadow-md  dark:bg-gray-50 dark:text-gray-800">
-                <img src={photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
-                <div className="flex flex-col justify-between p-6 space-y-8">
-                    <div className="space-y-2">
-                        <h2 className="text-3xl font-semibold tracking-wide">{itemName}</h2>
-                        <p className="dark:text-gray-800">{description}</p>
-                    </div>
-                    <Link to={`/crafts/${_id}`}>
-                        <button type="button" className=" items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#0097B2] dark:text-gray-50">View Details</button>
-                    </Link>
-                </div>
+            <Navbar></Navbar>
+            <div className="bg-base-200 my-10 py-5 w-full">
+                <h2 className="text-6xl font-serif text-center my-10">Art and Crafts</h2>
+            </div>
+            <div className="container mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {filteredCrafts.map(craft => (
+                    <Subcategory key={craft._id} craft={craft} />
+                ))}
             </div>
         </div>
     );
 };
-CraftCard.propTypes = {
-    craft: PropTypes.object
-}
 
-export default CraftCard;
+SubCategories.propTypes = {
+    craft: PropTypes.object
+};
+
+export default SubCategories;
